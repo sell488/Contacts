@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     private Stage primaryStage;
-    private BorderPane rootLayout;
+    private BorderPane RootLayout;
 
     @Override
     public void start(Stage primaryStage) {
@@ -32,10 +32,10 @@ public class Main extends Application {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            RootLayout = (BorderPane) loader.load();
 
             // Show the scene containing the root layout.
-            Scene scene = new Scene(rootLayout);
+            Scene scene = new Scene(RootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
@@ -51,10 +51,10 @@ public class Main extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/PersonOverview.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            AnchorPane PersonOverview = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            RootLayout.setCenter(PersonOverview);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,6 +69,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+
         launch(args);
     }
 }
