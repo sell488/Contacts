@@ -6,6 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sfcontacts.sfcontactsmodel.Person;
 import sfcontacts.Main;
+import sfcontacts.sfcontactsutil.DateUtil;
 
 public class PersonOverviewController {
     @FXML
@@ -45,8 +46,17 @@ public class PersonOverviewController {
     @FXML
     private void initialize() {
         // Initialize the person table with the two columns.
-        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+        firstNameColumn.setCellValueFactory(
+                cellData -> cellData.getValue().firstNameProperty());
+        lastNameColumn.setCellValueFactory(
+                cellData -> cellData.getValue().lastNameProperty());
+
+        // Clear person details.
+        showPersonDetails(null);
+
+        // Listen for selection changes and show the person details when changed.
+        personTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
     /**
@@ -60,4 +70,33 @@ public class PersonOverviewController {
         // Add observable list data to the table
         personTable.setItems(main.getPersonData());
     }
+
+    /**
+     * Fills all text fields to show details about the person.
+     * If the specified person is null, all text fields are cleared.
+     *
+     * @param person the person or null
+     */
+    private void showPersonDetails(Person person) {
+        if (person != null) {
+            // Fill the labels with info from the person object.
+            firstNameLabel.setText(person.getFirstName());
+            lastNameLabel.setText(person.getLastName());
+            streetLabel.setText(person.getStreet());
+            postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
+            cityLabel.setText(person.getCity());
+
+            birthdayLabel.setText(DateUtil.format(person.getBirthday()));
+            // birthdayLabel.setText(...);
+        } else {
+            // Person is null, remove all the text.
+            firstNameLabel.setText("");
+            lastNameLabel.setText("");
+            streetLabel.setText("");
+            postalCodeLabel.setText("");
+            cityLabel.setText("");
+            birthdayLabel.setText("");
+        }
+    }
+
 }
