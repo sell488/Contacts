@@ -62,6 +62,8 @@ public class Person {
         return firstName;
     }
 
+
+
     public String getLastName() {
         return lastName.get();
     }
@@ -73,6 +75,8 @@ public class Person {
     public StringProperty lastNameProperty() {
         return lastName;
     }
+
+
 
     public String getStreet() {
         return street.get();
@@ -86,6 +90,8 @@ public class Person {
         return street;
     }
 
+
+
     public int getPostalCode() {
         return postalCode.get();
     }
@@ -97,6 +103,8 @@ public class Person {
     public IntegerProperty postalCodeProperty() {
         return postalCode;
     }
+
+
 
     public String getCity() {
         return city.get();
@@ -110,6 +118,8 @@ public class Person {
         return city;
     }
 
+
+
     public LocalDate getBirthday() {
         return birthday.get();
     }
@@ -121,4 +131,6 @@ public class Person {
     public ObjectProperty<LocalDate> birthdayProperty() {
         return birthday;
     }
+
+
 }

@@ -12,21 +12,29 @@ import sfcontacts.sfcontactsutil.DateUtil;
 public class PersonOverviewController {
     @FXML
     private TableView<Person> personTable;
+
     @FXML
     private TableColumn<Person, String> firstNameColumn;
+
     @FXML
     private TableColumn<Person, String> lastNameColumn;
 
+
     @FXML
     private Label firstNameLabel;
+
     @FXML
     private Label lastNameLabel;
+
     @FXML
     private Label streetLabel;
+
     @FXML
     private Label postalCodeLabel;
+
     @FXML
     private Label cityLabel;
+
     @FXML
     private Label birthdayLabel;
 
